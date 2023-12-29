@@ -1,1 +1,502 @@
-/*# sourceMappingURL=style.css.map */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+}
+
+.head {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 50px;
+  z-index: 100;
+}
+.head__logo {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 32px;
+  text-decoration: none;
+  color: rgb(255, 60, 47);
+  text-transform: uppercase;
+  letter-spacing: -4px;
+}
+.head__nav {
+  position: relative;
+  padding: 5px;
+}
+.head__nav ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+.head__nav ul li {
+  position: relative;
+  list-style: none;
+  padding: 0 10px;
+}
+.head__nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 300;
+  transition: 0.5s;
+}
+.head__nav ul li::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 2px;
+  bottom: -10px;
+  left: 0;
+  border-radius: 10px;
+  transition: 1s;
+}
+.head__nav ul li:hover a {
+  letter-spacing: 1px;
+}
+.head__nav ul li:hover::after {
+  width: 100%;
+  background: rgb(255, 60, 47);
+}
+.head input {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: #fff;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  background: transparent;
+}
+.head input::-moz-placeholder {
+  color: #fff;
+}
+.head input::placeholder {
+  color: #fff;
+}
+
+.trading {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+.trading__imgBx {
+  width: 100%;
+  height: 100%;
+}
+.trading__imgBx img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.trading__content {
+  position: absolute;
+  max-width: 460px;
+  top: 45%;
+  left: 100px;
+  max-height: 354px;
+}
+.trading__content__trend {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.trading__content__trend span {
+  position: relative;
+  padding: 0 5px;
+  color: rgb(255, 255, 255);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-left: 5px;
+  font-size: 14px;
+}
+.trading__content__trend span::before {
+  position: absolute;
+  content: ".";
+  top: -50%;
+  left: -5px;
+  transform: translateY(30%);
+  font-weight: 800;
+}
+.trading__content__trend span:nth-child(1)::before {
+  content: "";
+}
+.trading__content__trend span:nth-child(3) {
+  background: rgb(255, 60, 47);
+  border-radius: 5px;
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+.trading__content__trend span:nth-child(3)::before {
+  left: -10px;
+}
+.trading__content__text {
+  position: relative;
+  padding: 5px 10px;
+}
+.trading__content__text h2 {
+  color: #fff;
+  font-weight: 700;
+  line-height: 25px;
+}
+.trading__content__text p {
+  font-weight: 400;
+  margin-top: 15px;
+  color: rgb(255, 255, 255);
+}
+.trading__content__text__btns {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+}
+.trading__content__text__btns a {
+  display: inline-block;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+  border-radius: 5px;
+  transition: letter-spacing 0.5s;
+}
+.trading__content__text__btns a:nth-child(1) {
+  background: rgb(255, 60, 47);
+}
+.trading__content__text__btns a:nth-child(2) {
+  background: rgb(51, 51, 51);
+  margin-left: 10px;
+}
+.trading__content__text__btns a:hover {
+  letter-spacing: 2px;
+}
+.trading::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(to top, #000 10%, transparent);
+  z-index: 100;
+}
+
+.tradingMovies {
+  position: relative;
+  padding: 20px 80px;
+  height: 100vh;
+}
+.tradingMovies .trading__text {
+  width: 100%;
+  padding-bottom: 20px;
+}
+.tradingMovies .trading__text h2 {
+  color: #fff;
+}
+.tradingMovies .tradingContent {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tradingMovies .tradingContent::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(to right, #000 40%, transparent);
+  z-index: 100;
+}
+.tradingMovies .tradingContent::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background: linear-gradient(to left, #000 40%, transparent);
+}
+.tradingMovies .tradingContent .tradingContent__Bg {
+  position: relative;
+  padding: 10px 85px;
+  padding-left: 60px;
+  max-width: 85%;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-flow: column;
+  gap: 10px;
+}
+.tradingMovies .tradingContent .tradingContent__Bg:hover::-webkit-scrollbar-thumb {
+  background: rgb(250, 7, 7);
+}
+.tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar-thumb {
+  background-color: rgba(240, 5, 5, 0.473);
+  border-radius: 20px;
+}
+.tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar-track {
+  background-color: rgba(179, 93, 93, 0.6);
+  border-radius: 20px;
+}
+.tradingMovies .tradingContent .tradingContent__Bg .card {
+  position: relative;
+  width: 150px;
+  height: 250px;
+  overflow: hidden;
+  background: rgba(54, 53, 53, 0.2);
+  padding: 10px 5px 25px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.tradingMovies .tradingContent .tradingContent__Bg .card .card__Image {
+  width: 100%;
+  height: 90%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.tradingMovies .tradingContent .tradingContent__Bg .card .card__Image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.tradingMovies .tradingContent .tradingContent__Bg .card .card__content {
+  padding: 5px;
+}
+.tradingMovies .tradingContent .tradingContent__Bg .card .card__content p {
+  color: #fff;
+  font-size: 0.75rem;
+}
+.tradingMovies .categories__content {
+  margin-top: 50px;
+  padding: 10px 80px;
+}
+.tradingMovies .categories__content .text {
+  padding: 0 5px;
+  padding-bottom: 10px;
+}
+.tradingMovies .categories__content .text h2 {
+  text-align: center;
+  color: #fff;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+.tradingMovies .categories__content .categories__item {
+  padding: 20px;
+}
+.tradingMovies .categories__content .categories__item .categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 10px;
+  gap: 15px;
+}
+.tradingMovies .categories__content .categories__item .categories li {
+  list-style: none;
+  background: rgb(51, 51, 51);
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: 100;
+  font-size: 14px;
+  transition: background 0.5s;
+  cursor: pointer;
+}
+.tradingMovies .categories__content .categories__item .categories li:hover {
+  background: red;
+}
+.tradingMovies .categories__content .categories__item[data-animated=true] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+  mask: linear-gradient(90deg, transparent, #fff 20%, #fff 80%, transparent);
+}
+.tradingMovies .categories__content .categories__item[data-animated=true] .categories {
+  width: -moz-max-content;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
+@media (max-width: 991px) {
+  .main::before {
+    height: 25px;
+  }
+  .head {
+    padding: 5px 10px;
+  }
+  .head__logo {
+    position: absolute;
+    left: 50%;
+    font-size: 24px;
+    transform: translateX(-50%);
+  }
+  .head__nav {
+    display: none;
+  }
+  .head__nav ul li a {
+    font-size: 1.5em;
+    margin: 10px 0;
+    display: inline-block;
+  }
+  .head__nav.active {
+    display: flex;
+  }
+  .head__nav.active ul {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .head__nav.active ~ input {
+    display: none;
+  }
+  .head input {
+    position: relative;
+    width: 120px;
+    right: 15px;
+  }
+  .trading {
+    width: 100%;
+  }
+  .trading__imgBx {
+    width: 100%;
+    height: 100%;
+  }
+  .trading__imgBx img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .trading__content {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+  }
+  .toggle {
+    position: relative;
+    width: 32px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: pointer;
+    left: 20px;
+  }
+  .toggle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transform: translateY(-10px);
+    box-shadow: 0 10px 0 #fff;
+    transition: 0.25s;
+  }
+  .toggle::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    transform: translateY(10px);
+    transition: 0.25s;
+  }
+  .toggle.active {
+    position: fixed;
+    left: 20px;
+    top: 5px;
+  }
+  .toggle.active::before {
+    transform: translateY(0) rotate(45deg);
+    box-shadow: 0 0 0 #fff;
+  }
+  .toggle.active::after {
+    transform: rotate(0) rotate(-45deg);
+  }
+  .tradingMovies {
+    padding: 5px;
+  }
+  .tradingMovies .trading__text {
+    margin-top: 15px;
+  }
+  .tradingMovies .trading__text h2 {
+    display: inline-block;
+    padding: 5px 15px;
+    margin-left: 5px;
+  }
+  .tradingMovies .tradingContent {
+    margin-top: 20px;
+    padding: 30px 0;
+  }
+  .tradingMovies .tradingContent::before {
+    width: 70px;
+    background: linear-gradient(to right, #000 20%, transparent);
+  }
+  .tradingMovies .tradingContent::after {
+    width: 70px;
+    background: linear-gradient(to left, #000 20%, transparent);
+  }
+  .tradingMovies .tradingContent .tradingContent__Bg {
+    padding: 10px 10px;
+  }
+  .tradingMovies .tradingContent .tradingContent__Bg .card {
+    padding: 10px 5px 20px;
+  }
+  .tradingMovies .categories__content {
+    padding: 5px 15px;
+  }
+  .tradingMovies .categories__content .text {
+    margin-bottom: 25px;
+  }
+  .tradingMovies .categories__content .categories__item {
+    padding: 5px;
+  }
+  .tradingMovies .categories__content .categories__item[data-animated=true] {
+    overflow: hidden;
+    -webkit-mask: linear-gradient(90deg, transparent, #fff 5%, #fff 45%, transparent);
+    mask: linear-gradient(90deg, transparent, #fff 5%, #fff 45%, transparent);
+  }
+  .tradingMovies .categories__content .categories__item[data-animated=true] .categories {
+    flex-wrap: nowrap;
+    animation: scroll 40s linear infinite;
+  }
+}/*# sourceMappingURL=style.css.map */

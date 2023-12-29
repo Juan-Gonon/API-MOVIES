@@ -5,12 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API MOVIES</title>
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
-    <h1>Platzi Movie</h1>
+
+    <main class="main">
+        <header class="head">
+            <a href="#" class="head__logo">
+                My Movies DB
+            </a>
+            <div class="toggle"></div>
+            <nav class="head__nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Trending Movies</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Popular</a></li>
+                    <li><a href="#">Upcoming</a></li>
+                </ul>
+            </nav>
+            <input type="search" placeholder="Search">
+        </header>
+        <div class="trading">
+            <div class="trading__imgBx">
+                <img src="img/image 1.png" alt="trading">
+            </div>
+            <div class="trading__content">
+                <div class="trading__content__trend">
+                    <span>7.5</span>
+                    <span>1h 55m</span>
+                    <span>Trending</span>
+                </div>
+                <div class="trading__content__text">
+                    <h2>Doctor Strange in the Multiverse <br> of Madness</h2>
+                    <p>Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.</p>
+                    <div class="trading__content__text__btns">
+                        <a href="#">Play Trailer</a>
+                        <a href="#">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tradingMovies">
+            <div class="trading__text">
+                <h2>Trending</h2>
+            </div>
+            <div class="tradingContent">
+                <div class="tradingContent__Bg">
+                    <div class="card">
+                        <div class="card__Image">
+                            <img src="img/image 4.png" alt="img">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__text">Jurassic World Dominion</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__Image">
+                            <img src="img/image 4.png" alt="img">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__text">Jurassic World Dominion</p>
+                        </div>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="categories__content">
+                <div class="text">
+                    <h2>Categories</h2>
+                </div>
+                <div class="categories__item">
+                    <ul class="categories">
+                        <!-- <li>animation</li>
+                        <li>Pesca</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
     
 
+   
     <script src="src/secrets.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <script src="src/main.js"></script>
+    <script src="src/script.js"></script>
 </body>
 </html>
