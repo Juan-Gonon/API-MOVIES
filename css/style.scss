@@ -99,6 +99,7 @@ body{
             position: absolute;
             z-index: 10;
             margin-left: 8px;
+            cursor: pointer;
 
             ion-icon{
                 color: #fff;
@@ -581,7 +582,7 @@ body{
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 10000;
+            z-index: 10;
             justify-content: center;
             align-items: flex-start;
             padding: 20px 100px;
@@ -724,6 +725,8 @@ body{
             right: 20px;
             cursor: pointer;
             padding: 0 10px;
+            display: flex;
+            align-items: center;
 
             .icon{
                 position: relative;
@@ -731,15 +734,71 @@ body{
                 // justify-content: center;
                 // align-items: center;
                 margin: 0;
+                cursor: pointer;
               
-
                 ion-icon{
                     font-size: 2rem;
+                    cursor: pointer;
+                }
+
+                &.active{
+                    position: fixed;
+                    z-index: 10000;
+                    left: 15px;
+                    // background: aqua;
+                    width: 20px;
+                    height: 20px;
+                    display: flex;
+                    align-items: center;
+                    transition: 0.5s ease-in;
+                    transition-delay: 0.3s;
+
+                    ion-icon{
+                        display: none;
+                    }
+
+                    &::before{
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        height: 2px;
+                        background: #fff;
+                        border-radius: 5px;
+                        transform: translateY(-5px) rotate(-30deg);
+                    }
+
+                    &::after{
+                        position: absolute;
+                        content: "";
+                        width: 100%;
+                        height: 2px;
+                        background: #fff;
+                        border-radius: 5px;
+                        transform: translateY(5px) rotate(30deg);
+                    }
                 }
             }
 
             .search_icon{
                 display: none;
+                // background: gray;
+                width: 100%;
+                position: fixed;
+                top: 0px;
+                left: 0;
+                z-index: 1000;
+                padding: 10px 0;
+                backdrop-filter: blur(10px);
+
+                input{
+                    width: 50%;
+                }
+               
+                &.active{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
     }

@@ -26,6 +26,9 @@ function scroller(){
     })
 }
 
-
+iconSearch.onclick = ()=>{
+    iconSearch.classList.toggle('active');
+    search.classList.toggle('active')
+}
 
 

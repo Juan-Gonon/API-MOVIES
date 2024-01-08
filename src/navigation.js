@@ -17,19 +17,26 @@ function navigator(){
         homePage()
     }
 
+    //document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
 }
 
 
 function homePage(){
     console.log('home')
+    head.style.position = 'absolute'; 
     getTrendingPreview()
     getCategoriesPreview()
+
+    search_icon.value = '';
 
     // const clases = main.classList;
     trading.classList.remove('active');
     tradingMovies.classList.remove('active');
     genericList.classList.add('inactive')
     categories__content.classList.remove('active')
+    iconSearch.classList.remove('active');
+    search.classList.remove('active')
 
 
     head.classList.remove('active');
@@ -47,6 +54,7 @@ function homePage(){
 }
 
 function  categoriesPage(){
+    // head.style.position = 'absolute'; 
     // console.log('categories')
     // console.log(main)
   
@@ -60,7 +68,9 @@ function  categoriesPage(){
     tradingMovies.classList.remove('active')
     categories__content.classList.add('active');
     categories__end.classList.add('active')
-    
+    iconSearch.classList.remove('active');
+    search.classList.remove('active')
+
     const [_, categoryData] = location.hash.split('=')
     //console.log(categoryData)
     const [categoryId, categoryName] = categoryData.split('-')
@@ -77,19 +87,69 @@ function movieDetailsPage(){
 
 function searchPage(){
     console.log('Búsqueda')
+
+    trading.classList.add('active');
+    trading__text.classList.add('active');
+    tradingContent.classList.add('active')
+    
+    tradingMovies.classList.add('active')
+    categories__content.classList.remove('active');
+    categories__end.classList.add('active')
+
+    head.style.position = 'relative';
+
+    
+
+    // console.log(location.hash)
+
+    const [_, query] = location.hash.split('=');
+
+    // console.log(query)
+
+    const name = decodeURIComponent(query)
+    // console.log(name)
+
+    if(name != ''){
+        genericList.classList.remove('inactive')
+        getMoviesBySearch(name)
+    }else{
+        genericList.classList.add('inactive')
+        homePage()
+    }
+
+
+
 }
 
 function trendsPage(){
+    search_icon.value = '';
+    head.style.position = 'absolute';
+
     console.log('TRENDS')
-    trading.classList.add('active')
-    tradingMovies.classList.add('active')
-    categories__content.classList.remove('active')
+    trading.classList.add('active');
+    trading__text.classList.remove('active')
+    tradingMovies.classList.add('active');
+    tradingContent.classList.remove('active')
+    categories__content.classList.remove('active');
+    genericList.classList.add('inactive')
+    iconSearch.classList.remove('active');
+    search.classList.remove('active')
 }
 
 categories__end.addEventListener('click', ()=>{
     location.hash = '#home'
 })
 
+// iconSearch.addEventListener('click', ()=>{
+//     console.log(search_icon.value)
+//     location.hash = '#search=' + search_icon.value;
+// })
+
+
+search_icon.addEventListener('input', ()=>{
+    console.log(search_icon.value)
+    location.hash = '#search=' + search_icon.value;
+})
 
 
 

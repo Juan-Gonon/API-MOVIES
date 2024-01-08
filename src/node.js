@@ -13,6 +13,15 @@ const categories__end = categories__content.querySelector('.categories__end');
 
 
 const head = main.querySelector('.head');
+const iconSearch = head.querySelector('.icon');
+const search = head.querySelector('.search_icon')
+const search_icon = head.querySelector('.search_icon input');
+
+console.log()
+
+
+
+console.log(iconSearch)
 
 const trading__text = tradingMovies.querySelector('.trading__text');
 const tradingContent = tradingMovies.querySelector('.tradingContent')
