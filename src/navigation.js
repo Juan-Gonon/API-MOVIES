@@ -10,7 +10,7 @@ function navigator(){
     }else if(location.hash.startsWith('#search=')){
         searchPage()
     }else if(location.hash.startsWith('#movie=')){
-        movieDetails()
+        movieDetailsPage()
     }else if(location.hash.startsWith('#category=')){
         categoriesPage()
     }else{
@@ -18,13 +18,13 @@ function navigator(){
     }
 
     //document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
 }
 
 
 function homePage(){
     console.log('home')
-    head.style.position = 'absolute'; 
+    // head.style.position = 'absolute'; 
     getTrendingPreview()
     getCategoriesPreview()
 
@@ -36,13 +36,15 @@ function homePage(){
     genericList.classList.add('inactive')
     categories__content.classList.remove('active')
     iconSearch.classList.remove('active');
-    search.classList.remove('active')
+    search.classList.remove('active');
+    tradingMovies.classList.remove('inactive')
 
 
     head.classList.remove('active');
     trading__text.classList.remove('active');
     tradingContent.classList.remove('active')
-    categories__end.classList.remove('active')
+    categories__end.classList.remove('active');
+    details.classList.add('inactive')
     //console.log(clases)
 
     // const mainClass = Array.from(clases).find((classes)=>{
@@ -60,6 +62,7 @@ function  categoriesPage(){
   
     // main.classList.add('cat')
     // console.log(location.hash)
+    genericList.style.top = '0px';
     head.classList.add('active');
     trading.classList.add('active');
     trading__text.classList.add('active');
@@ -69,7 +72,9 @@ function  categoriesPage(){
     categories__content.classList.add('active');
     categories__end.classList.add('active')
     iconSearch.classList.remove('active');
-    search.classList.remove('active')
+    search.classList.remove('active');
+    details.classList.add('inactive');
+    tradingMovies.classList.remove('inactive');
 
     const [_, categoryData] = location.hash.split('=')
     //console.log(categoryData)
@@ -83,22 +88,34 @@ function  categoriesPage(){
 
 function movieDetailsPage(){
     console.log('Movie')
+    // head.style.position = 'absolute'; 
+    trading.classList.add('active');
+    tradingMovies.classList.add('inactive');
+    details.classList.remove('inactive');
+    head.classList.remove('active')
+    // head.classList.add('active');
+
+   const [_, id] = location.hash.split('=');
+
+    getDetailsMovie(id)
 }
 
 function searchPage(){
     console.log('Búsqueda')
 
+    head.classList.remove('active');
+    // head.style.position = 'absolute'; 
     trading.classList.add('active');
     trading__text.classList.add('active');
     tradingContent.classList.add('active')
     
     tradingMovies.classList.add('active')
     categories__content.classList.remove('active');
-    categories__end.classList.add('active')
+    categories__end.classList.add('active');
+    details.classList.add('inactive');
+    tradingMovies.classList.remove('inactive')
 
-    head.style.position = 'relative';
-
-    
+    // head.style.position = 'relative';
 
     // console.log(location.hash)
 
@@ -110,34 +127,41 @@ function searchPage(){
     // console.log(name)
 
     if(name != ''){
-        genericList.classList.remove('inactive')
+        genericList.classList.remove('inactive');
+        genericList.style.top = '50px';
         getMoviesBySearch(name)
     }else{
-        genericList.classList.add('inactive')
-        homePage()
+        // homePage()
+        history.back()
     }
-
-
-
 }
 
 function trendsPage(){
     search_icon.value = '';
-    head.style.position = 'absolute';
+    // head.style.position = 'absolute';
+    genericList.style.top = '0px';
 
     console.log('TRENDS')
+    head.classList.remove('active')
     trading.classList.add('active');
     trading__text.classList.remove('active')
     tradingMovies.classList.add('active');
     tradingContent.classList.remove('active')
     categories__content.classList.remove('active');
-    genericList.classList.add('inactive')
+    genericList.classList.remove('inactive')
     iconSearch.classList.remove('active');
-    search.classList.remove('active')
+    search.classList.remove('active');
+    details.classList.add('inactive');
+    tradingMovies.classList.remove('inactive')
+
+
+    getTrending()
+
 }
 
 categories__end.addEventListener('click', ()=>{
-    location.hash = '#home'
+    history.back()
+    // location.hash = '#home'
 })
 
 // iconSearch.addEventListener('click', ()=>{
@@ -145,6 +169,9 @@ categories__end.addEventListener('click', ()=>{
 //     location.hash = '#search=' + search_icon.value;
 // })
 
+back.addEventListener('click', ()=>{
+    history.back()
+})
 
 search_icon.addEventListener('input', ()=>{
     console.log(search_icon.value)

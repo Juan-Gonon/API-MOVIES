@@ -24,11 +24,17 @@ function createMovies(movies, container){
         const card__content = document.createElement('div');
         const card__text = document.createElement('p');
 
+        card.addEventListener('click', ()=>{
+            console.log('has hecho click en: ' + i.title);
+            location.hash = `#movie=${i.id}`
+        })
 
         card.classList.add('card');
         card__Image.classList.add('card__Image');
         card__content.classList.add('card__content');
         card__text.classList.add('card__text')
+
+       
        
         img.setAttribute('alt', i.title)
         img.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + i.poster_path)
@@ -41,6 +47,8 @@ function createMovies(movies, container){
 
         //console.log(card)
         container.appendChild(card)
+
+      
     })
 }
 
@@ -150,6 +158,7 @@ async function getMoviesByCategory(id, name){
 }
 
 async function getMoviesBySearch(query){
+  
     try {
         const genericList = tradingMovies.querySelector('.genericList-container');
  
@@ -182,6 +191,95 @@ async function getMoviesBySearch(query){
 
 }
 
+
+async function getTrending(){
+    try{
+        const genericList = tradingMovies.querySelector('.genericList-container');
+        const res = await api('trending/movie/day');
+
+        if(res.status != 200){
+            throw new Error('ERROR ❎')
+        }else{
+            const genericList__Bg = genericList.querySelector('.genericList__Bg');
+            const movies = res.data.results;
+
+            createMovies(movies, genericList__Bg)
+            
+        }
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function getDetailsMovie(id){
+    console.log(id)
+    try{
+        const res = await api(`/movie/${id}`)
+        
+        if(res.status != 200){
+            throw new Error('Error details movie')
+        }else{
+            console.log(res.data)
+            const data = res.data;
+            const tiempo = data.runtime;
+            const horas = Math.floor(tiempo/60);
+            const minutos = tiempo%60;
+            const formatoTiempo = `${horas}h ${minutos}m`
+
+
+            backgroundImage.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + data.backdrop_path);
+            contentImage.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + data.poster_path);
+            vote.innerText = data.vote_average;
+            time.innerText = formatoTiempo;
+            console.log(data.spoken_languages)
+            language.innerHTML = '';
+            data.spoken_languages.forEach((lang)=>{
+              
+                console.log(lang.english_name);
+                // language.innerText = lang.english_name;
+                const span = document.createElement('span');
+
+                span.innerText = lang.english_name;
+
+                language.appendChild(span)
+
+            })
+
+            textTitle.innerText = data.title;
+            textTitleContent.innerText = data.overview;
+            textTitleReleased.innerText = `Released: ${data.release_date}`;
+            btnText.setAttribute('href', data.homepage);
+
+            createCategories(data.genres, contentCategories);
+            getMovieRecommendations(id)
+
+        }
+
+    }catch(err){
+        console.log(err)
+    }
+}
+
+async function getMovieRecommendations(id){
+    
+    try{
+        const res = await api(`movie/${id}/recommendations`);
+
+        if(res.status != 200){
+            throw new Error('Error al obtener recomendaciones')
+        }else{
+            const data = res.data;
+
+            console.log(data)
+
+            createMovies(data.results, detailSimilar)
+        }
+
+    }catch(err){
+        console.log(err)
+    }
+}
 
 
 
