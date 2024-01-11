@@ -131,7 +131,7 @@ dist
 
 # Secrets.js (API KEY)
 
-src/secrets.js
+.vscode
 
 # img
 img
