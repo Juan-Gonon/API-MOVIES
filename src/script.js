@@ -31,4 +31,15 @@ iconSearch.onclick = ()=>{
     search.classList.toggle('active')
 }
 
+function toggleVideo(){
+    const trailer = document.querySelector(".trailerVideo");
+    const video = trailer.querySelector("iframe");
+    console.log(video)
+    trailer.classList.toggle("active");
+    // video.currentTime=0;
+    // video.pause();
+    video.autoplay = 1;
+    
+}
+
 

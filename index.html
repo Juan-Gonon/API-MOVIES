@@ -13,7 +13,7 @@
     <main class="main">
         <header class="head">
             <a href="#" class="head__logo">
-                My Movies DB
+                GONON'S Movies
             </a>
             <div class="toggle"></div>
             <nav class="head__nav">
@@ -21,8 +21,8 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#trends">Trending Movies</a></li>
                     <li><a href="#category=">Categories</a></li>
-                    <li><a href="#">Popular</a></li>
-                    <li><a href="#">Upcoming</a></li>
+                    <li><a href="#popular">Popular</a></li>
+                    <li><a href="#upcoming">Upcoming</a></li>
                 </ul>
             </nav>
             <div class="search">
@@ -137,7 +137,13 @@
                             <h2>The sea Beast</h2>
                             <p>The life of a legendary sea monster hunter is turned upside down when a young girl stows away on his ship.</p>
                             <span>Released: 06/24/2022</span>
-                            <a href="#" class="btnText">Player Trailer</a>
+                            <!-- <a href="#" class="btnText">Player Trailer</a> -->
+                            <div class="trailerContent">
+                                <div class="trailerToggle">
+                                    <span>Player trailer</span>
+                                    <i><ion-icon name="play" onclick="toggleVideo()"></ion-icon></i>
+                                </div>
+                            </div>
                         </div>
                         <div class="contentCategories">
                                 <!-- <div class="categories__end"></div> -->
@@ -159,8 +165,56 @@
                     </div>
                 </div>
            </div>
+           <div class="trailerVideo">
+            <ion-icon name="close" class="close" onclick="toggleVideo()"></ion-icon>
+           </div>
         </div>
+        <div class="movieList inactive">
+            <div class="movieList__Popular">
+                <div class="movieList__Popular-text">
+                    <h3>Popular</h3>
+                </div>
+                <div class="movieList__Popular-content">
+                    <div class="card__popular">
+                        <div class="cardImage">
+                            <img src="img/image 4.png" alt="cardImage">
+                        </div>
+                        <div class="text">
+                            <p class="popular_text">Aqua man</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="movieList__Upcoming">
+                <div class="Upcoming__text">
+                    <h3>Upcoming</h3>
+                </div>
+                <div class="Upcoming__bg">
+                    <div class="card">
+                        <div class="card__Image">
+                            <img src="img/image 4.png" alt="img">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__text">Jurassic World Dominion</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card__Image">
+                            <img src="img/image 4.png" alt="img">
+                        </div>
+                        <div class="card__content">
+                            <p class="card__text">Jurassic World Dominion</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>       
+        </div>
+        <footer class="footer">
+            <p>© All rights reserved | Juan Gonon 2023</p>
+        </footer>
     </main>
+  
     
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -14,7 +14,7 @@ const api = new axios.create({
 
 /**______________ UTILS ___________________ */
 
-function createMovies(movies, container){
+function createMovies(movies, container, cardM, cardI, cardC, cardT){
     container.innerHTML = '';
 
     movies.forEach((i)=>{
@@ -29,10 +29,10 @@ function createMovies(movies, container){
             location.hash = `#movie=${i.id}`
         })
 
-        card.classList.add('card');
-        card__Image.classList.add('card__Image');
-        card__content.classList.add('card__content');
-        card__text.classList.add('card__text')
+        card.classList.add(cardM);
+        card__Image.classList.add(cardI);
+        card__content.classList.add(cardC);
+        card__text.classList.add(cardT)
 
        
        
@@ -89,7 +89,7 @@ async function getTrendingPreview(){
             const tradingContent__Bg = tradingContent.querySelector('.tradingContent__Bg')
             const movies = res.data.results;
 
-            createMovies(movies, tradingContent__Bg)
+            createMovies(movies, tradingContent__Bg, 'card', 'card__Image', 'card__content', 'card__text')
             
         }
 
@@ -148,7 +148,7 @@ async function getMoviesByCategory(id, name){
             const data = res.data.results;
             // console.log(data)
 
-            createMovies(data, genericList__Bg)
+            createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
           
         }
         
@@ -180,7 +180,7 @@ async function getMoviesBySearch(query){
              const data = res.data.results;
              // console.log(data)
  
-             createMovies(data, genericList__Bg)
+             createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
            
          }
          
@@ -203,7 +203,7 @@ async function getTrending(){
             const genericList__Bg = genericList.querySelector('.genericList__Bg');
             const movies = res.data.results;
 
-            createMovies(movies, genericList__Bg)
+            createMovies(movies, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
             
         }
 
@@ -232,7 +232,7 @@ async function getDetailsMovie(id){
             contentImage.setAttribute('src', 'https://image.tmdb.org/t/p/w500' + data.poster_path);
             vote.innerText = data.vote_average;
             time.innerText = formatoTiempo;
-            console.log(data.spoken_languages)
+            // console.log(data.spoken_languages)
             language.innerHTML = '';
             data.spoken_languages.forEach((lang)=>{
               
@@ -249,10 +249,11 @@ async function getDetailsMovie(id){
             textTitle.innerText = data.title;
             textTitleContent.innerText = data.overview;
             textTitleReleased.innerText = `Released: ${data.release_date}`;
-            btnText.setAttribute('href', data.homepage);
+            
 
             createCategories(data.genres, contentCategories);
             getMovieRecommendations(id)
+            getMovieTrailer(id);
 
         }
 
@@ -271,13 +272,90 @@ async function getMovieRecommendations(id){
         }else{
             const data = res.data;
 
-            console.log(data)
+            // console.log(data)
 
-            createMovies(data.results, detailSimilar)
+            createMovies(data.results, detailSimilar, 'card', 'card__Image', 'card__content', 'card__text')
         }
 
     }catch(err){
         console.log(err)
+    }
+}
+
+async function getMovieTrailer(id){
+
+    try {
+        const res = await api(`movie/${id}/videos`);
+      
+        if(res.status != 200){
+            throw new Error('Error al obtener trailer');
+        }else{
+            const results = res.data.results;
+            const trailer = results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+            trailerVideo.innerHTML = '';
+            if(trailer){
+                
+                // const UrlTrailer = `https://www.youtube.com/watch?v=${trailer.key}`
+                // // console.log(UrlTrailer)
+                // btnText.setAttribute('href', UrlTrailer);
+                // btnText.setAttribute('target', '_blank');
+                const iframe = document.createElement('iframe');
+                const ionIcon = document.createElement('ion-icon');
+
+                ionIcon.setAttribute('name', 'close');
+                ionIcon.setAttribute('class', 'close')
+
+                iframe.src = `https://www.youtube.com/embed/${trailer.key}`;
+                // iframe.width = 560; // Ajusta el ancho según tus necesidades
+                // iframe.height = 315; // Ajusta la altura según tus necesidades
+                trailerVideo.appendChild(ionIcon)
+                trailerVideo.appendChild(iframe)
+                ionIcon.onclick = ()=>{
+                    toggleVideo()
+                }
+            }else{
+                console.log('Trailer no encontrado')
+                btnText.setAttribute('href', '#');
+               
+            }
+
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function getMoviesPopular(){
+    try {
+        const res = await api('movie/popular')
+        
+        if(res.status != 200){
+            throw new Error('Error en Popular')
+        }else{
+            // movieList__Popular__content.innerHTML = '';
+            const data = res.data.results;
+            console.log(data)
+            createMovies(data, movieList__Popular__content, 'card__popular', 'cardImage', 'text', 'popular_text')
+
+        }
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+async function getMoviesUpcoming(){
+    try {
+        const res = await api('movie/upcoming');
+
+        if(res.status != 200){
+            throw new Error('Error al obtener Upcoming')
+        }else{
+            const data = res.data.results
+            createMovies(data, Upcoming__bg, 'card', 'card__Image', 'card__content', 'card__text')
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
