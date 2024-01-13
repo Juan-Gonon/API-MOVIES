@@ -18,11 +18,7 @@ const search = head.querySelector('.search_icon')
 const search_icon = head.querySelector('.search_icon input');
 const footer = main.querySelector('.footer')
 
-console.log()
 
-
-
-console.log(iconSearch)
 
 const trading__text = tradingMovies.querySelector('.trading__text');
 const tradingContent = tradingMovies.querySelector('.tradingContent')
@@ -50,21 +46,6 @@ const movieList__Popular__content = movieList.querySelector('.movieList__Popular
 const movieList__Upcoming = movieList.querySelector('.movieList__Upcoming');
 const Upcoming__bg = movieList__Upcoming.querySelector('.Upcoming__bg');
 const movieList__Popular = movieList.querySelector('.movieList__Popular');
-// const movieList__Upcoming = movieList.querySelector('.movieList__Upcoming');
 
-console.log(movieList__Upcoming)
-
-// console.log(contentCategories)
-// textDetails.forEach((i)=>{
-   
-//     if(i.nodeType === 1 && i.tagName.toLowerCase() === 'span'){
-//         console.log(i)
-//     }
-// })
-
-// console.log(back)
-// console.log(genericList)
-
-console.log(main)
 
 

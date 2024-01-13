@@ -25,7 +25,7 @@ function createMovies(movies, container, cardM, cardI, cardC, cardT){
         const card__text = document.createElement('p');
 
         card.addEventListener('click', ()=>{
-            console.log('has hecho click en: ' + i.title);
+            // console.log('has hecho click en: ' + i.title);
             location.hash = `#movie=${i.id}`
         })
 
@@ -213,14 +213,14 @@ async function getTrending(){
 }
 
 async function getDetailsMovie(id){
-    console.log(id)
+    // console.log(id)
     try{
         const res = await api(`/movie/${id}`)
         
         if(res.status != 200){
             throw new Error('Error details movie')
         }else{
-            console.log(res.data)
+            // console.log(res.data)
             const data = res.data;
             const tiempo = data.runtime;
             const horas = Math.floor(tiempo/60);
@@ -236,7 +236,7 @@ async function getDetailsMovie(id){
             language.innerHTML = '';
             data.spoken_languages.forEach((lang)=>{
               
-                console.log(lang.english_name);
+                // console.log(lang.english_name);
                 // language.innerText = lang.english_name;
                 const span = document.createElement('span');
 
@@ -334,7 +334,6 @@ async function getMoviesPopular(){
         }else{
             // movieList__Popular__content.innerHTML = '';
             const data = res.data.results;
-            console.log(data)
             createMovies(data, movieList__Popular__content, 'card__popular', 'cardImage', 'text', 'popular_text')
 
         }
