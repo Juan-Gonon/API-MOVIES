@@ -282,15 +282,10 @@ body {
   background: rgb(250, 7, 7);
 }
 .tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  height: 8px;
 }
 .tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar-thumb {
   background-color: rgba(240, 5, 5, 0.473);
-  border-radius: 20px;
-}
-.tradingMovies .tradingContent .tradingContent__Bg::-webkit-scrollbar-track {
-  background-color: rgba(179, 93, 93, 0.6);
   border-radius: 20px;
 }
 .tradingMovies .tradingContent .tradingContent__Bg .card {
@@ -636,12 +631,18 @@ body {
   padding: 5px 10px;
   color: #fff;
 }
-.details .detailsContent__Banner .contentText .textDetails .lang {
+.details .detailsContent__Banner .contentText .textDetails .content-lang {
+  position: relative;
   display: inline-block;
+}
+.details .detailsContent__Banner .contentText .textDetails .content-lang .lang {
   padding: 5px 10px;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
 }
-.details .detailsContent__Banner .contentText .textDetails .lang span {
+.details .detailsContent__Banner .contentText .textDetails .content-lang .lang span {
   padding: 5px 10px;
   color: #fff;
   background: rgb(178, 34, 34);
@@ -649,10 +650,10 @@ body {
   border-radius: 2px;
   cursor: pointer;
 }
-.details .detailsContent__Banner .contentText .textDetails .lang span:nth-child(2) {
+.details .detailsContent__Banner .contentText .textDetails .content-lang .lang span:nth-child(2) {
   background: rgb(153, 50, 204);
 }
-.details .detailsContent__Banner .contentText .textDetails .lang span:nth-child(3) {
+.details .detailsContent__Banner .contentText .textDetails .content-lang .lang span:nth-child(3) {
   background: rgb(255, 160, 122);
 }
 .details .detailsContent__Banner .contentText .textTitle {
@@ -910,9 +911,12 @@ body {
   background-color: rgba(240, 5, 5, 0.473);
   border-radius: 20px;
 }
-.movieList__Popular-content::-webkit-scrollbar-track {
-  background-color: rgba(179, 93, 93, 0.6);
-  border-radius: 20px;
+.movieList__Popular-content:hover::-webkit-scrollbar-thumb {
+  background: rgb(250, 7, 7);
+}
+.movieList__Popular-content::-webkit-scrollbar {
+  height: 8px;
+  width: 5px;
 }
 .movieList__Popular-content .card__popular {
   position: relative;
@@ -1016,15 +1020,11 @@ body {
   background: rgb(250, 7, 7);
 }
 .movieList__Upcoming .Upcoming__bg::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8x;
+  height: 8px;
 }
 .movieList__Upcoming .Upcoming__bg::-webkit-scrollbar-thumb {
   background-color: rgba(240, 5, 5, 0.473);
-  border-radius: 20px;
-}
-.movieList__Upcoming .Upcoming__bg::-webkit-scrollbar-track {
-  background-color: rgba(179, 93, 93, 0.6);
   border-radius: 20px;
 }
 
@@ -1067,8 +1067,12 @@ body {
   .head__logo {
     position: absolute;
     left: 50%;
-    font-size: 24px;
+    font-size: 20px;
     transform: translateX(-50%);
+    letter-spacing: -1px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 5px 5px rgba(240, 5, 15, 0.473);
   }
   .head__nav {
     display: none;
