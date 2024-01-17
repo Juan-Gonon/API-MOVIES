@@ -14,7 +14,20 @@ const api = new axios.create({
 
 /**______________ UTILS ___________________ */
 
-function createMovies(movies, container, cardM, cardI, cardC, cardT){
+const lazyLoader = new IntersectionObserver((entries)=>{
+    entries.forEach((entry)=>{
+        //console.log(entry.target.setAttribute);
+        if(entry.isIntersecting){
+            const url = entry.target.getAttribute('data');
+            entry.target.setAttribute('src', url)
+        }
+      
+        
+    })
+});
+
+function createMovies(movies, container, cardM, cardI, cardC, cardT, lazyLoad = false){
+    
     container.innerHTML = '';
 
     movies.forEach((i)=>{
@@ -36,9 +49,13 @@ function createMovies(movies, container, cardM, cardI, cardC, cardT){
 
        
        
-        img.setAttribute('alt', i.title)
-        img.setAttribute('src', 'https://image.tmdb.org/t/p/w300' + i.poster_path)
-        card__text.innerText = i.title
+        img.setAttribute('alt', i.title);
+        img.setAttribute(
+            lazyLoad ? 'data' : 'src', 'https://image.tmdb.org/t/p/w300' + i.poster_path);
+        card__text.innerText = i.title;
+        img.addEventListener('error', (error)=>{
+            img.setAttribute('src', '../img/and.jpg')
+        })
 
         card__Image.appendChild(img);
         card.appendChild(card__Image);
@@ -47,8 +64,9 @@ function createMovies(movies, container, cardM, cardI, cardC, cardT){
 
         //console.log(card)
         container.appendChild(card)
-
-      
+        if(lazyLoad){
+            lazyLoader.observe(img)
+        }
     })
 }
 
@@ -75,6 +93,7 @@ function createCategories(categories, container){
 }
 
 
+
 /**______________ Llamados a la API ___________________ */
 
 
@@ -89,7 +108,7 @@ async function getTrendingPreview(){
             const tradingContent__Bg = tradingContent.querySelector('.tradingContent__Bg')
             const movies = res.data.results;
 
-            createMovies(movies, tradingContent__Bg, 'card', 'card__Image', 'card__content', 'card__text')
+            createMovies(movies, tradingContent__Bg, 'card', 'card__Image', 'card__content', 'card__text', true)
             
         }
 
@@ -148,7 +167,7 @@ async function getMoviesByCategory(id, name){
             const data = res.data.results;
             // console.log(data)
 
-            createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
+            createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text', true)
           
         }
         
@@ -180,7 +199,7 @@ async function getMoviesBySearch(query){
              const data = res.data.results;
              // console.log(data)
  
-             createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
+             createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text', true)
            
          }
          
@@ -203,7 +222,7 @@ async function getTrending(){
             const genericList__Bg = genericList.querySelector('.genericList__Bg');
             const movies = res.data.results;
 
-            createMovies(movies, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text')
+            createMovies(movies, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text', true)
             
         }
 
@@ -274,7 +293,7 @@ async function getMovieRecommendations(id){
 
             // console.log(data)
 
-            createMovies(data.results, detailSimilar, 'card', 'card__Image', 'card__content', 'card__text')
+            createMovies(data.results, detailSimilar, 'card', 'card__Image', 'card__content', 'card__text', true)
         }
 
     }catch(err){
@@ -334,7 +353,7 @@ async function getMoviesPopular(){
         }else{
             // movieList__Popular__content.innerHTML = '';
             const data = res.data.results;
-            createMovies(data, movieList__Popular__content, 'card__popular', 'cardImage', 'text', 'popular_text')
+            createMovies(data, movieList__Popular__content, 'card__popular', 'cardImage', 'text', 'popular_text', true)
 
         }
         
@@ -351,7 +370,7 @@ async function getMoviesUpcoming(){
             throw new Error('Error al obtener Upcoming')
         }else{
             const data = res.data.results
-            createMovies(data, Upcoming__bg, 'card', 'card__Image', 'card__content', 'card__text')
+            createMovies(data, Upcoming__bg, 'card', 'card__Image', 'card__content', 'card__text', true)
         }
     } catch (error) {
         console.log(error)

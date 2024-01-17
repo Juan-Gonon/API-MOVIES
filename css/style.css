@@ -288,40 +288,6 @@ body {
   background-color: rgba(240, 5, 5, 0.473);
   border-radius: 20px;
 }
-.tradingMovies .tradingContent .tradingContent__Bg .card {
-  position: relative;
-  width: 150px;
-  height: 250px;
-  overflow: hidden;
-  background: rgba(54, 53, 53, 0.2);
-  padding: 10px 5px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.5s;
-}
-.tradingMovies .tradingContent .tradingContent__Bg .card .card__Image {
-  width: 100%;
-  height: 90%;
-  border-radius: 5px;
-  overflow: hidden;
-}
-.tradingMovies .tradingContent .tradingContent__Bg .card .card__Image img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.tradingMovies .tradingContent .tradingContent__Bg .card .card__content {
-  padding: 5px;
-}
-.tradingMovies .tradingContent .tradingContent__Bg .card .card__content p {
-  color: #fff;
-  font-size: 0.75rem;
-}
-.tradingMovies .tradingContent .tradingContent__Bg .card:hover {
-  transform: translateY(-10px);
-  background: rgba(110, 105, 105, 0.342);
-}
 .tradingMovies .tradingContent.active {
   display: none;
 }
@@ -406,6 +372,23 @@ body {
   font-size: 14px;
   transition: background 0.5s;
   cursor: pointer;
+}
+.tradingMovies .categories__content .categories__item .categories li.list-loading {
+  height: 40px;
+  width: 100px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background: rgba(110, 105, 105, 0.342);
+  animation: loading-skeleton infinite 1.5s;
+}
+.tradingMovies .categories__content .categories__item .categories li.list-loading:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.tradingMovies .categories__content .categories__item .categories li.list-loading:nth-child(3) {
+  animation-delay: 0.25s;
+}
+.tradingMovies .categories__content .categories__item .categories li.list-loading:nth-child(4) {
+  animation-delay: 0.3s;
 }
 .tradingMovies .categories__content .categories__item .categories li:hover {
   background: red;
@@ -492,6 +475,19 @@ body {
   cursor: pointer;
   transition: transform 0.5s;
 }
+.card.card-loading {
+  background: rgba(110, 105, 105, 0.342);
+  animation: loading-skeleton infinite 1.5s;
+}
+.card.card-loading:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card.card-loading:nth-child(3) {
+  animation-delay: 0.25s;
+}
+.card.card-loading:nth-child(4) {
+  animation-delay: 0.3s;
+}
 .card .card__Image {
   width: 100%;
   height: 90%;
@@ -577,6 +573,7 @@ body {
   max-height: 550px;
   max-width: 400px;
   width: 100%;
+  height: 100%;
   overflow: hidden;
   padding: 0;
   opacity: 0.7;
@@ -1057,6 +1054,14 @@ body {
     transform: translateY(0);
   }
 }
+@keyframes loading-skeleton {
+  0%, 100% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 50%;
+  }
+}
 @media (max-width: 991px) {
   .main::before {
     height: 25px;
@@ -1247,11 +1252,13 @@ body {
   }
   .tradingMovies .trading__text {
     margin-top: 15px;
+    text-align: center;
   }
   .tradingMovies .trading__text h2 {
     display: inline-block;
     padding: 5px 15px;
     margin-left: 5px;
+    font-size: 1.3rem;
   }
   .tradingMovies .tradingContent {
     margin-top: 0px;
@@ -1277,11 +1284,13 @@ body {
   }
   .tradingMovies .categories__content .text h2 {
     padding: 2px 5px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     letter-spacing: 0;
+    font-weight: 700;
   }
   .tradingMovies .categories__content .text h2 span {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    text-transform: capitalize;
   }
   .tradingMovies .categories__content .text .categories__end.active {
     width: 20px;
@@ -1393,8 +1402,13 @@ body {
     padding: 0 0;
   }
   .movieList__Popular-text {
-    padding-left: 15px;
     padding-bottom: 20px;
+    text-align: center;
+  }
+  .movieList__Popular-text h3 {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    font-weight: 700;
   }
   .movieList__Popular-content {
     padding: 5px 15px;
@@ -1419,17 +1433,23 @@ body {
     height: 100%;
     background: linear-gradient(to left, #000 40%, transparent);
   }
+  .movieList__Upcoming .Upcoming__text {
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
   .movieList__Upcoming .Upcoming__bg {
     padding: 10px 15px;
   }
   .footer {
     position: relative;
     width: 100%;
-    padding: 15px 25px;
+    padding: 15px 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   .footer p {
     color: #fff;
+    font-size: 0.9rem;
   }
   .footer.inactive {
     display: none;

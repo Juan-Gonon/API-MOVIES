@@ -352,43 +352,43 @@ body{
             // }
 
 
-            .card{
-                position: relative;
-                width: 150px;
-                height: 250px;
-                overflow: hidden;
-                background: rgba(54, 53, 53, 0.2);
-                padding: 10px 5px 25px;
-                border-radius: 10px;
-                cursor: pointer;
-                //background: aqua;
-                transition: transform 0.5s;
+            // .card{
+            //     position: relative;
+            //     width: 150px;
+            //     height: 250px;
+            //     overflow: hidden;
+            //     background: rgba(54, 53, 53, 0.2);
+            //     padding: 10px 5px 25px;
+            //     border-radius: 10px;
+            //     cursor: pointer;
+            //     //background: aqua;
+            //     transition: transform 0.5s;
 
-                .card__Image{
-                    width: 100%;
-                    height: 90%;
-                    border-radius: 5px;
-                    overflow: hidden;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-                }
-                .card__content{
-                    padding: 5px;
-                    //margin-top: 5px;
-                    p{
-                        color: #fff;
-                        font-size: .75rem;
-                    }
-                }
+            //     .card__Image{
+            //         width: 100%;
+            //         height: 90%;
+            //         border-radius: 5px;
+            //         overflow: hidden;
+            //         img{
+            //             width: 100%;
+            //             height: 100%;
+            //             object-fit: cover;
+            //         }
+            //     }
+            //     .card__content{
+            //         padding: 5px;
+            //         //margin-top: 5px;
+            //         p{
+            //             color: #fff;
+            //             font-size: .75rem;
+            //         }
+            //     }
 
-                &:hover{
-                    transform: translateY(-10px);
-                    background: rgba(110, 105, 105, 0.342);
-                }
-            }
+            //     &:hover{
+            //         transform: translateY(-10px);
+            //         background: rgba(110, 105, 105, 0.342);
+            //     }
+            // }
 
         }
 
@@ -496,6 +496,25 @@ body{
                     font-size: 14px;
                     transition: background 0.5s;
                     cursor: pointer;
+
+                    &.list-loading{
+                        height: 40px;
+                        width: 100px;
+                        padding: 10px 15px;
+                        border-radius: 5px;
+                        background: rgba(110, 105, 105, 0.342);
+                        animation: loading-skeleton infinite 1.5s;
+                
+                        &:nth-child(2){
+                            animation-delay: 0.2s;
+                        }
+                        &:nth-child(3){
+                            animation-delay: 0.25s;
+                        }
+                        &:nth-child(4){
+                            animation-delay: 0.30s;
+                        }
+                    }
 
                     &:hover{
                         background: red;
@@ -644,6 +663,23 @@ body{
     //background: aqua;
     transition: transform 0.5s;
 
+    &.card-loading{
+        background: rgba(110, 105, 105, 0.342);
+        animation: loading-skeleton infinite 1.5s;
+
+        &:nth-child(2){
+            animation-delay: 0.2s;
+        }
+        &:nth-child(3){
+            animation-delay: 0.25s;
+        }
+        &:nth-child(4){
+            animation-delay: 0.30s;
+        }
+
+    }
+
+
     .card__Image{
         width: 100%;
         height: 90%;
@@ -748,6 +784,7 @@ body{
                 max-height: 550px;
                 max-width: 400px;
                 width: 100%;
+                height: 100%;
                 overflow: hidden;
                 padding: 0;
                 // margin: 0;
@@ -1355,6 +1392,15 @@ body{
     }
 }
 
+@keyframes loading-skeleton{
+    0%,100%{
+        opacity: 100%;
+    }
+    50%{
+        opacity: 50%;
+    }
+}
+
 
 @media (max-width: 991px){
 
@@ -1591,13 +1637,15 @@ body{
         padding: 5px 0px;
 
         .trading__text{
-            //background: aqua;
+            // background: aqua;
             margin-top: 15px;
+            text-align: center;
             h2{
                 //background: gray;
                 display: inline-block;
                 padding: 5px 15px;
                 margin-left: 5px;
+                font-size: 1.3rem;
             }
         }
 
@@ -1639,10 +1687,13 @@ body{
                 h2{
                     // background: aqua;
                     padding: 2px 5px;
-                    font-size: 1rem;
+                    font-size: 1.3rem;
                     letter-spacing: 0;
+                    font-weight: 700;
                     span{
-                        font-size: 1rem;
+                        font-size: 1.2rem;
+                        text-transform: capitalize;
+                     
                     }
                 }
 
@@ -1828,8 +1879,16 @@ body{
             padding: 0 0;
             &-text{
                 // background: aqua;
-                padding-left: 15px;
+                // padding-left: 15px;
                 padding-bottom: 20px;
+                // background: aqua;
+                text-align: center;
+
+                h3{
+                    text-transform: capitalize;
+                    font-size: 1.3rem;
+                    font-weight: 700;
+                }
             }
 
             &-content{
@@ -1857,6 +1916,13 @@ body{
                 height: 100%;
                 background: linear-gradient(to left, #000 40%, transparent);
             }
+
+            .Upcoming__text{
+                // background: aqua;
+                text-transform: capitalize;
+                font-size: 1.3rem;
+                font-weight: 700;
+            }
             .Upcoming__bg{
                 // background: aqua;
                 padding: 10px 15px;
@@ -1868,11 +1934,12 @@ body{
         // background: #fff;
         position: relative;
         width: 100%;
-        padding: 15px 25px;
+        padding: 15px 20px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
      
         p{
             color: #fff;
+            font-size: .9rem;
         }
     
         &.inactive{
