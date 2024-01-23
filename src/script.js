@@ -1,4 +1,6 @@
 //DOM
+
+
 const toggle = document.querySelector('.toggle');
 const nav = document.querySelector('.head__nav');
 
@@ -34,7 +36,6 @@ iconSearch.onclick = ()=>{
 function toggleVideo(){
     const trailer = document.querySelector(".trailerVideo");
     const video = trailer.querySelector("iframe");
-    console.log(video)
     trailer.classList.toggle("active");
     // video.currentTime=0;
     // video.pause();
@@ -42,4 +43,27 @@ function toggleVideo(){
     
 }
 
+langs.onclick = ()=>{
+    langs.classList.toggle('active')
+}
+
+
+// span1.addEventListener('click', ()=>{
+//     // console.log(span1)
+// })
+
+function selectLanguage(idiomas, spanLangs){
+    
+    for(let i=0; i<idiomas.length; i++){
+        // console.log(spanLangs[i])
+        // spanLangs[i].id = idiomas[i]
+        spanLangs[i].setAttribute('id', idiomas[i])
+
+        spanLangs[i].onclick = ()=>{
+            API_LANG = spanLangs[i].id;
+            api.defaults.params.language = API_LANG;
+            homePage()
+        }
+    }
+}
 

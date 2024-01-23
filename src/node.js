@@ -1,3 +1,5 @@
+
+
 const main = document.querySelector('.main');
 
 
@@ -47,6 +49,13 @@ const movieList__Popular__content = movieList.querySelector('.movieList__Popular
 const movieList__Upcoming = movieList.querySelector('.movieList__Upcoming');
 const Upcoming__bg = movieList__Upcoming.querySelector('.Upcoming__bg');
 const movieList__Popular = movieList.querySelector('.movieList__Popular');
+
+const liked__container = tradingMovies.querySelector('.liked__container');
+const liked__card = liked__container.querySelector('.liked__card');
+
+const langs = head.querySelector('.langs');
+
+
 
 
 
