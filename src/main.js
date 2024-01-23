@@ -103,16 +103,13 @@ function createMovies(movies, container,
             likedMovie(i);
             getLikedMovies();
         })
-
-        
-
        
         img.setAttribute('alt', i.title);
         img.setAttribute(
             lazyLoad ? 'data' : 'src', 'https://image.tmdb.org/t/p/w300' + i.poster_path);
         card__text.innerText = i.title;
         img.addEventListener('error', (error)=>{
-            img.setAttribute('src', '../img/and.jpg')
+            img.setAttribute('src', 'img/and.jpg')
         })
 
         card__Image.appendChild(img);
@@ -612,7 +609,7 @@ async function scrollInfiniteUpcoming(){
     try {
         const {scrollTop, clientHeight, scrollHeight} = document.documentElement;
         const scrollIsBottom = (scrollTop + clientHeight) >= scrollHeight;
-        console.log(page)
+        // console.log(page)
         const pageIsNotMax = page < maxPage;
         
         if(scrollIsBottom && pageIsNotMax){
@@ -711,7 +708,7 @@ function scrollInfiniteMoviesCategories(id){
                         
                      const genericList__Bg = genericList.querySelector('.genericList__Bg');
                     const data = res.data.results;
-                    console.log(res.data.results)
+                    // console.log(res.data.results)
 
                     createMovies(data, genericList__Bg, 'card', 'card__Image', 'card__content', 'card__text', 
                         {
